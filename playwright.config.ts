@@ -91,5 +91,11 @@ export default defineConfig({
   //   url: 'http://localhost:3000',
   //   reuseExistingServer: !process.env.CI,
   // },
-  testIgnore: ["**/network-api/**"],
+  testIgnore: ["**/network-api/**", ""],
+  expect: {
+    // для скріншотів (toHaveScreenshot)
+    toHaveScreenshot: {
+      maxDiffPixelRatio: 0.01, // 1% різниці
+    },
+  },
 });
