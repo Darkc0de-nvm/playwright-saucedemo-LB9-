@@ -1,6 +1,6 @@
 import { test, expect } from "../../src/fixtures/baseTest";
 
-test("route.fulfill: mock inventory.html document", async ({ page }) => {
+test("route.fulfill: mock inventory.html document", async ({ page, inventoryPage }) => {
     await page.route("**/inventory.html", async (route) => {
         // Можна також взяти route.fetch() і модифікувати, але для лекції простіше повний mock
         await route.fulfill({
@@ -26,7 +26,7 @@ test("route.fulfill: mock inventory.html document", async ({ page }) => {
         });
     });
 
-    await page.goto("/inventory.html");
+    await inventoryPage.open();
 
     await expect(page.locator('[data-test="inventory-container"]')).toBeVisible();
     await expect(page.locator('[data-test="inventory-item-name"]')).toHaveText("MOCKED ITEM ✅");

@@ -1,6 +1,6 @@
 import { test, expect } from "../../src/fixtures/baseTest";
 
-test("offline: requests fail in offline mode", async ({ context, page }) => {
+test("offline: requests fail in offline mode", async ({ context, page, inventoryPage }) => {
     await context.setOffline(true);
 
     const failures: string[] = [];
@@ -8,7 +8,7 @@ test("offline: requests fail in offline mode", async ({ context, page }) => {
         failures.push(`${r.method()} ${r.url()} :: ${r.failure()?.errorText}`);
     });
 
-    await page.goto("/inventory.html").catch(() => null);
+    await inventoryPage.open()
 
     expect(failures.length).toBeGreaterThan(0);
     // На лекції можна вивести failures в console.log, щоб було наочно 🙂
