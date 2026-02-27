@@ -62,6 +62,7 @@ npx playwright show-report
 ## 🧐 Використати проєкт
 
 **🚀 Клонувати репозиторій:**
-   ```
-   git clone [https://github.com/Darkc0de-nvm/playwright-saucedemo-LB9-.git](https://github.com/Darkc0de-nvm/playwright-saucedemo-LB9-.git)
+```
+   git clone https://github.com/Darkc0de-nvm/playwright-saucedemo-LB9-.git 
    cd playwright-saucedemo-LB9-
+```
