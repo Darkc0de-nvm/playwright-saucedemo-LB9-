@@ -72,4 +72,32 @@ export class InventoryPage extends BasePage{
             await expect(item.locator("img")).toBeVisible();
         }
     }
+    // --- Доповнити InventoryPage ---
+
+    /** Додати товар до кошика за його назвою */
+    async addItem(name: string): Promise<void> {
+        const item = this.itemByName(name);
+        await item.locator('button:has-text("Add to cart")').click();
+    }
+
+    /** Видалити товар через кнопку на сторінці Inventory */
+    async removeItem(name: string): Promise<void> {
+        const item = this.itemByName(name);
+        await item.locator('button:has-text("Remove")').click();
+    }
+
+    /** Перевірка кількості товарів у бейджі кошика */
+    async expectCartBadge(count: number): Promise<void> {
+        if (count === 0) {
+            await expect(this.cartBadge).not.toBeVisible();
+        } else {
+            await expect(this.cartBadge).toBeVisible();
+            await expect(this.cartBadge).toHaveText(count.toString());
+        }
+    }
+
+    /** Відкрити сторінку кошика (через Header) */
+    async openCart(): Promise<void> {
+        await this.header.openCart();
+    }
 }
